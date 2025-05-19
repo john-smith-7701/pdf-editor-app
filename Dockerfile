@@ -1,36 +1,33 @@
+# ベースイメージとして Node.js slim を使用
 FROM node:20-slim
 
-# 必要なライブラリをインストール（puppeteer用）
+# 必要なツールと日本語フォント、Puppeteer の依存パッケージをインストール
 RUN apt-get update && apt-get install -y \
-  wget ca-certificates fonts-ipafont-gothic fonts-ipafont-mincho \
-  fonts-noto-cjk libx11-dev libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 \
-  libxdamage1 libxi6 libxtst6 libnss3 libxrandr2 libasound2 libpangocairo-1.0-0 \
-  libatk1.0-0 libgtk-3-0 libgbm-dev libxshmfence-dev \
-  && apt-get clean && rm -rf /var/lib/apt/lists/*
+    wget \
+    ca-certificates \
+    fonts-ipafont-gothic fonts-ipafont-mincho \
+    fonts-noto-cjk \
+    libx11-dev libx11-xcb1 libxcomposite1 libxcursor1 libxdamage1 \
+    libxext6 libxi6 libnss3 libxrandr2 libgbm1 libasound2 \
+    libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 \
+    libxss1 libxshmfence1 libgtk-3-0 \
+    --no-install-recommends && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Puppeteer が Chromium を自動でダウンロードしないように
-ENV PUPPETEER_SKIP_DOWNLOAD=true
-
-# アプリ配置
+# 作業ディレクトリを作成
 WORKDIR /app
-COPY package.json ./
+
+# package.json と package-lock.json のみを最初にコピー（キャッシュ有効活用）
+COPY package*.json ./
+
+# npm install の実行
 RUN npm install
+
+# 残りのアプリケーションコードをコピー
 COPY . .
 
-# Puppeteer が自動で Chromium のパスを検出できるように
-ENV CHROME_BIN=/usr/bin/google-chrome
+# 必要であればビルド（ReactやTypeScriptの場合など）
+# RUN npm run build
 
-# puppeteer が Chromium を使うようにパスを通す
-RUN npx puppeteer install
-
-
-# Express のポートを公開
-EXPOSE 3000
-
-# Puppeteer を無制限で使うための設定
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable
-
-# 起動コマンド
-CMD ["node", "index.js"]
-
+# アプリの起動
+CMD ["npm", "start"]
