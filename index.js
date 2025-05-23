@@ -22,6 +22,7 @@ process.on('uncaughtException', (err) => {
 // 📝 Puppeteer でクライアントデータを指定位置に描画し PDF 化
 async function generatePdfFromHtml(textItems, width, height, isLandscape, rotationAngle) {
     const browser = await puppeteer.launch({
+	 executablePath: '/usr/bin/chromium',
          headless: true,
          args: [
       		"--disable-gpu",
@@ -92,7 +93,7 @@ async function generatePdfFromHtml(textItems, width, height, isLandscape, rotati
     content: `
         @font-face {
             font-family: 'IPAmjMincho';
-            src: url('file:///usr/share/fonts/truetype/ipafont/ipamjm.ttf') format('truetype');
+            src: url('file://${__dirname}/fonts/ipamjm.ttf') format('truetype');
         }
         body {
             font-family: 'IPAmjMincho', sans-serif !important;
