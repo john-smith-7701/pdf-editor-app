@@ -25,6 +25,7 @@ async function generatePdfFromHtml(textItems, width, height, isLandscape, rotati
 	 executablePath: '/usr/bin/chromium',
          headless: true,
          args: [
+		"--disable-crash-reporter",
       		"--disable-gpu",
       		"--disable-dev-shm-usage",
       		"--disable-setuid-sandbox",
