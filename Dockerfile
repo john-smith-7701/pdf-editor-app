@@ -40,6 +40,10 @@ RUN npm install --legacy-peer-deps --no-audit --no-fund
 # アプリケーション本体をコピー
 COPY . .
 
+# AppRunが提供するポートに対応
+ENV PORT=8080
+EXPOSE 8080
+
 # アプリ起動
-CMD ["npm", "start"]
+CMD ["node", "index.js"]
 

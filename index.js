@@ -8,7 +8,7 @@ const path = require("path");
 
 const app = express();
 const upload = multer({ dest: "uploads/" });
-const port = 3000;
+const port = process.env.PORT || 8080;
 const fontColor = 'red'; 
 
 app.use(cors());
@@ -26,7 +26,7 @@ async function generatePdfFromHtml(textItems, width, height, isLandscape, rotati
          headless: true,
          args: [
 		"--disable-crash-reporter",
-      		"--disable-gpu",
+g     		"--disable-gpu",
       		"--disable-dev-shm-usage",
       		"--disable-setuid-sandbox",
       		"--no-first-run",
