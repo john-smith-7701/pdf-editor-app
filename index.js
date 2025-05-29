@@ -26,7 +26,7 @@ async function generatePdfFromHtml(textItems, width, height, isLandscape, rotati
          headless: true,
          args: [
 		"--disable-crash-reporter",
-g     		"--disable-gpu",
+     		"--disable-gpu",
       		"--disable-dev-shm-usage",
       		"--disable-setuid-sandbox",
       		"--no-first-run",
