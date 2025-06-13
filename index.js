@@ -109,7 +109,7 @@ async function generatePdfFromHtml(textItems, width, height, isLandscape, rotati
         height: `${isLandscape ? width : height}px`,
         printBackground: true,
         landscape: true,
-        format: "a3",
+        format: "a4",
     });
     await browser.close();
     return pdfBuffer;
