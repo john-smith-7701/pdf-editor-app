@@ -109,7 +109,7 @@ async function generatePdfFromHtml(textItems, width, height, isLandscape, rotati
         height: `${isLandscape ? width : height}px`,
         printBackground: true,
         landscape: true,
-        format: "a4",
+        format: "a3",
     });
     await browser.close();
     return pdfBuffer;
@@ -138,8 +138,12 @@ async function mergePdfs(originalPdfPath, overlayPdfBuffer, rotationAngle) {
     } else if (rotationAngle === 180) {
         adjustedX = originalPage.getWidth();
         adjustedY = originalPage.getHeight();
+    } else {
+        adjustedX = 0;
+        adjustedY = 0;
     }
 
+    console.log(`${new Date()} : Processing PDF - x: ${adjustedX}, y: ${adjustedY},  Rotation: ${rotationAngle}`);
     originalPage.drawPage(embeddedPage, {
         x: adjustedX,
         y: adjustedY,

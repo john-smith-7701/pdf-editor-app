@@ -40,10 +40,13 @@ RUN npm install --legacy-peer-deps --no-audit --no-fund
 # アプリケーション本体をコピー
 COPY . .
 
+# pm2 をグローバルインストール
+RUN npm install -g pm2
+
 # AppRunが提供するポートに対応
 ENV PORT=8080
 EXPOSE 8080
 
 # アプリ起動
-CMD ["node", "index.js"]
+CMD ["pm2-runtime", "ecosystem.config.js"]
 
