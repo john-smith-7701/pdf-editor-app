@@ -138,6 +138,9 @@ async function mergePdfs(originalPdfPath, overlayPdfBuffer, rotationAngle) {
     } else if (rotationAngle === 180) {
         adjustedX = originalPage.getWidth();
         adjustedY = originalPage.getHeight();
+    } else {
+        adjustedX = 0;
+        adjustedY = 0;
     }
 
     if ( overlayPage.getWidth() > overlayPage.getHeight() && rotationAngle == 0){
