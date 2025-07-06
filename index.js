@@ -140,6 +140,11 @@ async function mergePdfs(originalPdfPath, overlayPdfBuffer, rotationAngle) {
         adjustedY = originalPage.getHeight();
     }
 
+    if ( overlayPage.getWidth() > overlayPage.getHeight() && rotationAngle == 0){
+	adjustedY = originalPage.getHeight() - overlayPage.getHeight();  // -247; 
+        console.log(`${new Date()} : Processing PDF - overlay: ${overlayPage.getHeight()}, original: ${originalPage.getHeight()}`);
+
+    }
     originalPage.drawPage(embeddedPage, {
         x: adjustedX,
         y: adjustedY,
