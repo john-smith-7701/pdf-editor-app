@@ -208,7 +208,7 @@ app.get("/", (req, res) => {
         <!DOCTYPE html>
         <html>
         <head>
-            <title>PDF 編集テスト</title>
+            <title>PDF 編集 Ver.1.0</title>
             <script>
                 async function sendForm(event) {
                     event.preventDefault();
