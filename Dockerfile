@@ -25,7 +25,7 @@ RUN apt-get update && apt-get install -y \
 #    wget -O /usr/share/fonts/truetype/ipafont/IPAexfont.zip https://moji.or.jp/wp-content/ipafont/IPAexfont/IPAexfont00401.zip && \
 #    unzip -o /usr/share/fonts/truetype/ipafont/IPAexfont.zip -d /usr/share/fonts/truetype/ipafont && \
 #    fc-cache -f -v
-COPY fonts/ipamjm.ttf /usr/share/fonts/truetype/. 
+COPY fonts/DWPIexMincho.ttf /usr/share/fonts/truetype/. 
 RUN  fc-cache -f -v
 
 # 作業ディレクトリ

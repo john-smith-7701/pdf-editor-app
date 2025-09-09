@@ -62,7 +62,7 @@ async function generatePdfFromHtml(textItems, width, height, isLandscape, rotati
 	    return `<div style="
             position: absolute;
             color: ${fontColor};
-            font-family: 'IPAmjMincho', 'Arial', sans-serif;
+            font-family: 'DWPIexMincho', 'Arial', sans-serif;
             ${prop}
             ">${item['text']}</div>`;
 	}
@@ -73,12 +73,12 @@ async function generatePdfFromHtml(textItems, width, height, isLandscape, rotati
     <head>
         <style>
             @font-face {
-                font-family: 'IPAmjMincho';
-                src: url('file://${__dirname}/fonts/ipamjm.ttf');
+                font-family: 'DWPIexMincho';
+                src: url('file://${__dirname}/fonts/DWPIexMincho.ttf');
                 //src: url('file:///usr/share/fonts/truetype/ipafont/ipamjm.ttf');
             }
             body {
-                font-family: 'IPAmjMincho';
+                font-family: 'DWPIexMincho';
                 font-size: 16px;
                 margin: 0;
                 position: relative;
@@ -208,7 +208,7 @@ app.get("/", (req, res) => {
         <!DOCTYPE html>
         <html>
         <head>
-            <title>PDF 編集 Ver.1.0</title>
+            <title>PDF 編集 Ver.1.1</title>
             <script>
                 async function sendForm(event) {
                     event.preventDefault();
