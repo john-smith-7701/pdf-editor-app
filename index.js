@@ -72,11 +72,6 @@ async function generatePdfFromHtml(textItems, width, height, isLandscape, rotati
     <html>
     <head>
         <style>
-            @font-face {
-                font-family: 'DWPIexMincho';
-                src: url('file://${__dirname}/fonts/DWPIexMincho.ttf');
-                //src: url('file:///usr/share/fonts/truetype/ipafont/ipamjm.ttf');
-            }
             body {
                 font-family: 'DWPIexMincho';
                 font-size: 16px;
@@ -92,10 +87,6 @@ async function generatePdfFromHtml(textItems, width, height, isLandscape, rotati
 
     await page.addStyleTag({
     content: `
-        @font-face {
-            font-family: 'IPAmjMincho';
-            src: url('file://${__dirname}/fonts/ipamjm.ttf') format('truetype');
-        }
         body {
             font-family: 'IPAmjMincho', sans-serif !important;
         }
@@ -208,7 +199,7 @@ app.get("/", (req, res) => {
         <!DOCTYPE html>
         <html>
         <head>
-            <title>PDF 編集 Ver.1.1</title>
+            <title>PDF 編集 Ver.1.2</title>
             <script>
                 async function sendForm(event) {
                     event.preventDefault();
