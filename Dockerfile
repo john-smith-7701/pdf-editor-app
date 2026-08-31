@@ -26,6 +26,7 @@ RUN apt-get update && apt-get install -y \
 #    unzip -o /usr/share/fonts/truetype/ipafont/IPAexfont.zip -d /usr/share/fonts/truetype/ipafont && \
 #    fc-cache -f -v
 COPY fonts/DWPIexMincho.ttf /usr/share/fonts/truetype/. 
+COPY fonts/customEUDC.ttf /usr/share/fonts/truetype/. 
 RUN  fc-cache -f -v
 
 # 作業ディレクトリ

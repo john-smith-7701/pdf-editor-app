@@ -62,7 +62,7 @@ async function generatePdfFromHtml(textItems, width, height, isLandscape, rotati
 	    return `<div style="
             position: absolute;
             color: ${fontColor};
-            font-family: 'DWPIexMincho', 'Arial', sans-serif;
+            font-family: 'customEUDC','DWPIexMincho', 'Arial', sans-serif;
             ${prop}
             ">${item['text']}</div>`;
 	}
@@ -88,7 +88,7 @@ async function generatePdfFromHtml(textItems, width, height, isLandscape, rotati
     await page.addStyleTag({
     content: `
         body {
-            font-family: 'IPAmjMincho', sans-serif !important;
+            font-family: 'customEUDC','IPAmjMincho', sans-serif !important;
         }
     `
     });
@@ -100,7 +100,7 @@ async function generatePdfFromHtml(textItems, width, height, isLandscape, rotati
         height: `${isLandscape ? width : height}px`,
         printBackground: true,
         landscape: true,
-        format: "a3",
+        format: "a2",
     });
     await browser.close();
     return pdfBuffer;
