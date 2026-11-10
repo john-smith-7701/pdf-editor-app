@@ -2,7 +2,8 @@
 FROM node:20-slim
 
 # PuppeteerがChromiumを自動ダウンロードしないようにする
-ENV PUPPETEER_SKIP_DOWNLOAD=true
+ENV PUPPETEER_SKIP_DOWNLOAD=true \
+    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
 
 # 必要なライブラリと日本語フォント、Chromiumのインストール
 RUN apt-get update && apt-get install -y \
